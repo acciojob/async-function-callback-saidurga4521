@@ -7,10 +7,15 @@ let callback = function () {
 };
 
 async function getData(callback) {
-    let url = callback();
-    let response = await fetch(url);
-    let data = await response.json();
-    localStorage.setItem("data", JSON.stringify(data)); // Corrected "Stringify" to "stringify"
+	try{
+			
+	    let url = callback();
+	    let response = await fetch(url);
+	    let data = await response.json();
+	    localStorage.setItem("data", JSON.stringify(data));
+	   } catch(error){
+		 console.log(error)
+	   }
 }
 
 getData(callback);
